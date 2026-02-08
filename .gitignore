@@ -1,34 +1,24 @@
- {
-  "compilerOptions": {
-    /* Language & runtime */
-    "target": "ES2022",
-    "lib": ["ES2022"],
+# dependencies
+node_modules/
 
-    /* Node ESM */
-    "module": "ES2022",
-    "moduleResolution": "node",
+# build output
+dist/
+*.tsbuildinfo
 
-    /* Project structure */
-    "rootDir": "src",
-    "outDir": "dist",
+# environment
+.env
+.env.*
 
-    /* Type safety */
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
 
-    /* Interop & correctness */
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+# Drizzle migrations output (optional to commit; ignore by default)
+drizzle/
 
-    /* Build output */
-    "sourceMap": true,
-
-    /* Performance */
-    "skipLibCheck": true,
-
-    /* Environment types */
-    "types": ["node"]
-  },
-  "include": ["src"]
-}
+# OS
+.DS_Store
+Thumbs.db
