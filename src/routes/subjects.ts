@@ -28,10 +28,9 @@ router.get('/', async (req, res) => {
 
          //if department filter exit match department name
          if(department){
-            filterCondition.push(
-                or(
-                    ilike(departments.name, `%${department}%`)
-                )
+            const deptPathern = `%${String(department).replace(/[%_]/g, '\\$&')}%`;
+            filterCondition.push(ilike(departments.name, deptPathern),
+                
             )
          }
 
