@@ -22,7 +22,7 @@ const securityMiddleware  = async (req: Request, res: Response, next: NextFuncti
                 // break;
             case 'student':
                 limit=10;
-                message="student request limit exceeded (20 per min). please wait.";
+                message="student request limit exceeded (10 per min). please wait.";
                 break;
             default:
                 limit=5
@@ -49,7 +49,7 @@ const securityMiddleware  = async (req: Request, res: Response, next: NextFuncti
         const decision = await client.protect(arcjetRequest)
 
         if(decision.isDenied() && decision.reason.isBot()) {
-            return res.status(403).json({error: 'Forbidden', message: 'authomated requet are not allowed.'})
+            return res.status(403).json({error: 'Forbidden', message: 'Automated requests are not allowed.'})
         }
 
         if(decision.isDenied() && decision.reason.isShield()) {
@@ -57,7 +57,7 @@ const securityMiddleware  = async (req: Request, res: Response, next: NextFuncti
         }
 
         if(decision.isDenied() && decision.reason.isRateLimit()) {
-            return res.status(403).json({error: 'To many request', message})
+            return res.status(429).json({error: 'Too many requests', message})
         }
 
         next()

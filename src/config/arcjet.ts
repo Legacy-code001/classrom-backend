@@ -1,7 +1,7 @@
 import arcjet, {shield, detectBot, slidingWindow} from "@arcjet/node";
 
-if(!process.env.ARJET_KEY && process.env.NODE_ENV !== "test"){
-    throw new Error('ARJET_KEY env is required')
+if(!process.env.ARCJET_KEY && process.env.NODE_ENV !== "test"){
+    throw new Error('ARCJET_KEY env is required')
 }
 
 const aj = arcjet({
@@ -28,7 +28,7 @@ const aj = arcjet({
     // Create a token bucket rate limit. Other algorithms are supported.
    slidingWindow({
     mode: "LIVE",
-    interval: "2",
+    interval: 2,
     max: 5,
    })
   ],
